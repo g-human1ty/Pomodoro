@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pomodoro Timer</h1>
+            <p class="subtitle">Stay focused, stay productive</p>
+        </header>
+        
+        <main>
+            <div class="timer-card">
+                <div class="timer-display">
+                    <div class="time" id="time">25:00</div>
+                    <div class="timer-label" id="timer-label">Focus Time</div>
+                </div>
+                
+                <div class="timer-controls">
+                    <button class="btn btn-primary" id="start-btn">Start</button>
+                    <button class="btn btn-secondary" id="pause-btn" disabled>Pause</button>
+                    <button class="btn btn-secondary" id="reset-btn">Reset</button>
+                </div>
+                
+                <div class="timer-modes">
+                    <button class="mode-btn active" data-time="25" data-label="Focus Time">Focus</button>
+                    <button class="mode-btn" data-time="5" data-label="Short Break">Short Break</button>
+                    <button class="mode-btn" data-time="15" data-label="Long Break">Long Break</button>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="completed-sessions">0</span>
+                    <span class="stat-label">Sessions</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="total-time">0</span>
+                    <span class="stat-label">Minutes</span>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Take breaks, stay productive! 🍅</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 
