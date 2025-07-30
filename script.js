@@ -62,6 +62,8 @@ class PomodoroTimer {
         this.pause();
         this.timeLeft = this.getCurrentModeTime() * 60;
         this.updateDisplay();
+        // Reset tab title to original
+        document.title = 'Pomodoro Timer';
     }
     
     complete() {
@@ -108,7 +110,27 @@ class PomodoroTimer {
     updateDisplay() {
         const minutes = Math.floor(this.timeLeft / 60);
         const seconds = this.timeLeft % 60;
-        this.timeDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        // Update the display
+        this.timeDisplay.textContent = timeString;
+        
+        // Update the browser tab title
+        this.updateTabTitle(timeString);
+    }
+    
+    updateTabTitle(timeString) {
+        const activeButton = document.querySelector('.mode-btn.active');
+        const modeLabel = activeButton ? activeButton.dataset.label : 'Pomodoro';
+        const status = this.isRunning ? '⏸️' : '⏸️';
+        
+        // Only update title if timer is running or paused
+        if (this.isRunning || this.timeLeft < this.getCurrentModeTime() * 60) {
+            document.title = `${timeString} - ${modeLabel} - Pomodoro Timer`;
+        } else {
+            // Reset to original title when timer is reset
+            document.title = 'Pomodoro Timer';
+        }
     }
     
     updateStats() {
